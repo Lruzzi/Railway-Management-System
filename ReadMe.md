@@ -1,6 +1,6 @@
 This is my first website called Railway Management System
 Using PostgreSQL, Express, and NodeJS
-This will be updated since its all in file javascript and i want to divide the html and javascript file in the future
+This will be updated since its all in file javascript and i want to divide the html and javascript file in the future and i want to add css file also
 I made it for final project on Lab Data based System at Computer Engineering University of Indonesia 2022
 
 Overview:
