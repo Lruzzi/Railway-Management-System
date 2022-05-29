@@ -4,8 +4,9 @@ This will be updated since its all in file javascript and i want to divide the h
 I made it for final project on Lab Data based System at Computer Engineering University of Indonesia 2022
 
 Overview:
-This website made for admin to manage the database
+This website made for admin to manage the database.
 Admin can input data, update or change data, and delete data
+
 There are 5 tables :
 1. Kereta to store train data
 2. Stasiun to store train Station data
@@ -16,7 +17,10 @@ but the table of admin is private.
 
 For Login
 username : rames
+
 password : rames123
+
+
 
 
 *Note Now the javascript file and html file are separated
