@@ -5,9 +5,12 @@ I made it for final project on Lab Data based System at Computer Engineering Uni
 
 Overview:
 This website made for admin to manage the database.
-Admin can input data, update or change data, and delete data
+Admin can input data, update or change data, and delete data.
+
+Without Login you only can see the data
 
 There are 5 tables :
+
 1. Kereta to store train data
 2. Stasiun to store train Station data
 3. Rute to store train route data
@@ -16,6 +19,7 @@ There are 5 tables :
 but the table of admin is private.
 
 For Login
+
 username : rames
 
 password : rames123
