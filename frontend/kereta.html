@@ -10,7 +10,9 @@
             transform: translate(-50%, -50%);
 
         }
-
+        #footersec{
+            min-width: 100%;
+        }
         .footer {
             position: fixed;
             left: 0;
@@ -29,7 +31,7 @@
     <header>
         <div class="container-fluid p-0" style="background-color:black">
             <nav class="navbar navbar-expand-lg">
-                <img src="images/favicon-ikn.png" alt="logo ikn" width="50" height="50">
+                <img src="images/favicon-ikn.png" alt="logo ikn" width="50" height="50" style="margin-right: 30px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -39,13 +41,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">HOME</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style: solid;border-right-style: solid;" href="/">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/stasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/stasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/kereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/kereta">KERETA</a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0" action="/loginpage">
@@ -57,7 +59,7 @@
         </div>
     </header>
 
-    <main>
+    <main style="margin-top: 30px;">
         <div class="container text-center">
             <div class="row">
                 <div class="col-md-2"></div>
@@ -90,18 +92,20 @@
     </script>
 </body>
 <div class="footer">
-    <div class="container text-left">
+    <div class="container"  id="footersec">
         <div class="row">
-            <div class="col-md-2 col-lg-2 col-sm-12">
-                <h6>Copyright &copy; 2022</h6>
-                <p>UNIVERSITAS INDONESIA</p>
+            <div class="col-4 text-left">
+                <h6  style="margin-top: 1rem;">Copyright &copy; 2022</h6>
+                <p  style="margin-top: 1rem;">UNIVERSITAS INDONESIA</p>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class ="col-4 text-center" style="border-style:solid ;border-color: white;margin-top: 10px; margin-bottom: 10px;">
+                <p  style="margin-top: 1rem; font-size:large;">Railway Management System</p>
             </div>
-            <div class="col-md-2 col-lg-2 col-sm-12 mx-auto">
-                <p> DEPOK </p>
-                <p> <span id="cdate"></span> </p>
-                <p> <span id="ctime"> </span></p>
+            <div class="col-4 text-right">
+                
+                <p  style="margin-top: 1rem;"> <span id="cdate"></span> </p>
+                <p style="margin-bottom: 0rem;" > <span id="ctime"> </span></p>
+                
             </div>
         </div>
     </div>

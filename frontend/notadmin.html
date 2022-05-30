@@ -10,7 +10,9 @@
             transform: translate(-50%, -50%);
 
         }
-
+        #footersec{
+            min-width: 100%;
+        }
         .footer {
             position: fixed;
             left: 0;
@@ -29,33 +31,27 @@
     <header>
         <div class="container-fluid p-0" style="background-color:black">
             <nav class="navbar navbar-expand-lg">
-                <img src="images/favicon-ikn.png" alt="logo ikn" width="50" height="50">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+                <img src="images/favicon-ikn.png" alt="logo ikn" width="50" height="50" style="margin-right:30px">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
-                        <p class="text-primary" id="tempuser">Welcome</p>
+                        <p id="tempuser" class="text-primary center"></p>
                     </div>
                     <form class="form-inline my-2 my-lg-0" action="/logout">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submits">LOGOUT</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
             </nav>
@@ -90,18 +86,20 @@
     </script>
 </body>
 <div class="footer">
-    <div class="container">
+    <div class="container"  id="footersec">
         <div class="row">
-            <div class="col-md-2 col-lg-2 col-sm-12 text-left">
-                <h6>Copyright &copy; 2022</h6>
-                <p>UNIVERSITAS INDONESIA</p>
+            <div class="col-4 text-left">
+                <h6  style="margin-top: 1rem;">Copyright &copy; 2022</h6>
+                <p  style="margin-top: 1rem;">UNIVERSITAS INDONESIA</p>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class ="col-4 text-center" style="border-style:solid ;border-color: white;margin-top: 10px; margin-bottom: 10px;">
+                <p  style="margin-top: 1rem; font-size:large;">Railway Management System</p>
             </div>
-            <div class="col-md-2 col-lg-2 col-sm-12 mx-auto text-right">
-                <p> DEPOK </p>
-                <p> <span id="cdate"></span> </p>
-                <p> <span id="ctime"> </span></p>
+            <div class="col-4 text-right">
+                
+                <p  style="margin-top: 1rem;"> <span id="cdate"></span> </p>
+                <p style="margin-bottom: 0rem;" > <span id="ctime"> </span></p>
+                
             </div>
         </div>
     </div>

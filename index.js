@@ -282,6 +282,18 @@ router.post("/deletetarif", (req, res) => {
   }
 });
 
+router.post('/cekusername' , (req, res) => {
+  var username = req.body.username;
+  console.log(username);
+  const query = `select username from admin where username like '${username}'`;
+  db.query(query, (err, results) => {
+    if (results.rowCount > 0) {
+      res.end("taken");
+    } else {
+      res.end("not_taken");
+    }
+  });
+});
 //Cek ID Tarif
 router.post("/cektarif", (req, res) => {
   var id_tarif = req.body.id_tarif;
@@ -1622,7 +1634,7 @@ router.get("/logout", (req, res) => {
 //menampilkan usurname
 router.post('/getuser' , (req, res) => {
   temp = req.session;
-  res.end('<p class="text-primary">Welcome ' + temp.username + '</p>');
+  res.end('<p style="color:white; border-style:solid ;border-color: white;border-radius:25px;width:100px;margin:20px" class="text-center">Hello ' + temp.username + '!</p>');
 });
 
 app.use("/", router);
