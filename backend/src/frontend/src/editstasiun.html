@@ -35,25 +35,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/railway/editrute">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/tarif">TARIF</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editadmin">ADMIN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editadmin">ADMIN</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
                         <p id="tempuser" class="text-primary center"></p>
                     </div>
-                    <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/logout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
@@ -203,10 +203,10 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/getstasiun', {}, function (data) {
+        $.post('/railway/getstasiun', {}, function (data) {
             $('#stasiun').html(data);
         });
-        $.post('/getuser', {}, function (datas) {
+        $.post('/railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });
@@ -215,7 +215,7 @@
         daerah_stasiun = $('#daerah_stasiun').val();
         tahun_dibangun = $('#tahun_dibangun').val();
 
-        $.post('/inputstasiun', {
+        $.post('/railway/inputstasiun', {
             nama_stasiun: nama_stasiun,
             daerah_stasiun: daerah_stasiun,
             tahun_dibangun: tahun_dibangun
@@ -233,21 +233,21 @@
 
     $('#update').click(function () {
         id_stasiun = $('#id_update').val();
-        $.post('/cekstasiun', {
+        $.post('/railway/cekstasiun', {
             id_stasiun: id_stasiun
         }, function (data) {
             if (data === 'found') {
                 nama_stasiun = $('#nama_update').val();
                 daerah_stasiun = $('#daerah_update').val();
                 tahun_bangun = $('#tahun_update').val();
-                $.post('/updatestasiun', {
+                $.post('/railway/updatestasiun', {
                     id_stasiun: id_stasiun,
                     nama_stasiun: nama_stasiun,
                     daerah_stasiun: daerah_stasiun,
                     tahun_bangun: tahun_bangun
                 }, function (data) {
                     if (data === 'updated') {
-                        window.location.href = '/editstasiun';
+                        window.location.href = '/railway/editstasiun';
                         window.alert('Update Data Stasiun Sukses');
                     } else if (data === 'empty') {
                         window.alert('Input Data Tidak Boleh Kosong Semua');
@@ -267,7 +267,7 @@
 
     $('#deletes').click(function () {
         id_stasiun = $('#id_update').val();
-        $.post('/cekstasiun', {
+        $.post('/railway/cekstasiun', {
             id_Stasiun: id_stasiun
         }, function (data) {
             if (data === 'found') {
@@ -276,7 +276,7 @@
                         id_stasiun: id_stasiun
                     }, function (datas) {
                         if (datas === 'deleted') {
-                            window.location.href = '/editstasiun';
+                            window.location.href = '/railway/editstasiun';
                             window.alert('Data Stasiun Berhasil Dihapus');
                         } else {
                             window.alert('Data Stasiun Gagal Dihapus');

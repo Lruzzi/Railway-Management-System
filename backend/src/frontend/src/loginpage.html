@@ -41,10 +41,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;border-left-style: solid;" href="/">HOME</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;border-left-style: solid;" href="/railway/home">HOME</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="/">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/home">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BACK</button>
                     </form>
                 </div>
@@ -101,12 +101,12 @@
             username = $('#username').val();
             pass = $('#password').val();
 
-            $.post('/login', {
+            $.post('/railway/login', {
                 username: username,
                 pass: pass
             }, function (data) {
                 if (data === 'done') {
-                    window.location.href = '/admin';
+                    window.location.href = '/railway/editrute';
                     window.alert('Login Sukses');
                 } else if (data === 'fail') {
                     window.alert('Password Salah');

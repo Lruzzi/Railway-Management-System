@@ -2,21 +2,21 @@ const express = require('express');
 const router = express.Router();
 const railwayController = require('../controllers/railway.controller');
 const path = require('path');
-const home = path.join(__dirname, '../frontend/src/home.html');
+var temp
 
 //Halaman untuk umum (home page) menampilkan informasi rute join table kereta, stasiun, dan tarif
 router.get("/home", (req, res) => {
-    res.sendFile(home);
+    res.sendFile(path.join(__dirname, '../frontend/src/home.html'));
   });
   
   //Halaman untuk umum menampilkan table kereta
 router.get("/kereta", (req, res) => {
-    res.sendFile(path.join(__dirname + ".../frontend/kereta.html"));
+  res.sendFile(path.join(__dirname, '../frontend/src/kereta.html'));
 });
   
   //Halaman untuk umun menampilkan table stasiun
   router.get("/stasiun", (req, res) => {
-    res.sendFile(path.join(__dirname + "/frontend/stasiun.html"));
+    res.sendFile(path.join(__dirname, '../frontend/src/stasiun.html'));
   });
   
   //Halaman untuk Login
@@ -24,22 +24,22 @@ router.get("/kereta", (req, res) => {
     temp = req.session;
     if (temp.username) {
       //jika admin terdaftar maka akan masuk ke halaman admin
-      return res.redirect("/admin");
+      return res.redirect("/railway/editrute");
     } else {
       //jika admin belum login maka akan masuk ke halaman login
-      res.sendFile(path.join(__dirname + "/frontend/loginpage.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/loginpage.html'));
     }
   });
   
   //Halam utama admin, untuk operasi CRUD table RUTE
-  router.get("/admin", (req, res) => {
+  router.get("/editrute", (req, res) => {
     temp = req.session;
     if (temp.username) {
       //jika user terdaftar maka akan masuk ke halaman admin
-      res.sendFile(path.join(__dirname + "/frontend/src/admin.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/editrute.html'));
       //mengarahkan ke halaman login
     } else {
-      res.sendFile(path.join(__dirname + "/frontend/loginpage.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/loginpage.html'));
     }
   });
   
@@ -47,10 +47,10 @@ router.get("/kereta", (req, res) => {
   router.get("/editstasiun", function (req, res, next) {
     temp = req.session;
     if (temp.username) {
-      res.sendFile(path.join(__dirname + "/frontend/editstasiun.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/editstasiun.html'));
       //mengarahkan ke halaman login
     } else {
-      res.sendFile(path.join(__dirname + "/frontend/loginpage.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/loginpage.html'));
     }
   });
   
@@ -58,10 +58,10 @@ router.get("/kereta", (req, res) => {
   router.get("/editkereta", function (req, res, next) {
     temp = req.session;
     if (temp.username) {
-      res.sendFile(path.join(__dirname + "/frontend/editkereta.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/editkereta.html'));
       //Mengarahkan ke halaman login
     } else {
-      res.sendFile(path.join(__dirname + "/frontend/loginpage.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/loginpage.html'));
     }
   });
   
@@ -69,33 +69,50 @@ router.get("/kereta", (req, res) => {
   router.get("/tarif", function (req, res, next) {
     temp = req.session;
     if (temp.username) {
-      res.sendFile(path.join(__dirname + "/frontend/edittarif.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/edittarif.html'));
       //Mengarahkan ke halaman login
     } else {
-      res.sendFile(path.join(__dirname + "/frontend/loginpage.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/loginpage.html'));
     }
   });
   
   //Front-End untuk halaman edit data admin (Operasi CRUD)
-  router.get("/editadmin", function (req, res, next) {
+  router.get("/editadmin", async function (req, res, next) {
     temp = req.session;
     if (temp.username) {
-      db.query(
-        `select super_admin from admin where username = '${temp.username}'`,
-        function (err, result) {
-          if (result.rows[0].super_admin == true) {
-            res.sendFile(path.join(__dirname + "/frontend/admin.html"));
-            //Jika Bukan Super Admin, tidak dapat mengakses /editadmin
-          } else {
-            res.sendFile(path.join(__dirname + "/frontend/notadmin.html"));
-          }
-        }
-      );
-  
-      //Mengarahkan ke halaman login jika belum login atau session habis
+      cek = await railwayController.cekSuper(temp.username);
+      if(cek === 'super'){
+        res.sendFile(path.join(__dirname, '../frontend/src/admin.html'));
+      }
+      else{
+        res.sendFile(path.join(__dirname, '../frontend/src/notadmin.html'));
+      }
+      //Mengarahkan ke halaman login
     } else {
-      res.sendFile(path.join(__dirname + "/frontend/loginpage.html"));
+      res.sendFile(path.join(__dirname, '../frontend/src/loginpage.html'));
     }
   });
+
+  router.post("/getData", railwayController.getData);
+
+  router.post("/getKereta", railwayController.getKereta);
+
+  router.post("/getStasiun", railwayController.getStasiun);
+
+  router.post("/login", railwayController.login);
+
+  router.post("/getRute", railwayController.getRute);
+
+  router.post("/getTarif", railwayController.getTarif);
+
+  router.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return console.log(err);
+      }
+      res.redirect("/railway/home");
+    });
+  });
+
 
 module.exports = router;

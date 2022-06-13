@@ -31,7 +31,7 @@
     <header>
         <div class="container-fluid p-0" style="background-color:black">
             <nav class="navbar navbar-expand-lg">
-                <img src="frontend/public/favicon-ikn.png" alt="logo ikn" width="50" height="50" style="margin-right: 30px;">
+                <img src="https://github.com/Lruzzi/logoikn/blob/main/favicon-ikn.png" alt="logo ikn" width="50" height="50" style="margin-right: 30px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -41,16 +41,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style: solid;border-right-style: solid;" href="/">HOME</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style: solid;border-right-style: solid;" href="/railway/home">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/stasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/stasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/kereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/kereta">KERETA</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="/loginpage">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/loginpage">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGIN</button>
                     </form>
                 </div>
@@ -113,7 +113,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/getkereta', {}, function (data) {
+        $.post('/railway/getKereta', {}, function (data) {
             $('#kereta').html(data);
         });
     });

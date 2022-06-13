@@ -35,25 +35,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/railway/editrute">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/tarif">TARIF</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editadmin">ADMIN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editadmin">ADMIN</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
                         <p id="tempuser" class="text-primary center"></p>
                     </div>
-                    <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/logout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
@@ -195,7 +195,7 @@
 <script>
         $("#username").change(function(){
         username = $('#username').val();
-        $.post('/cekusername', {username: username}, function (datas) {
+        $.post('railway/cekusername', {username: username}, function (datas) {
             if(datas === 'taken'){
                 alert('username tidak bisa digunakan');
             }
@@ -205,10 +205,10 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/getadmin', {}, function (data) {
+        $.post('railway/getadmin', {}, function (data) {
             $('#admin').html(data);
         });
-        $.post('/getuser', {}, function (datas) {
+        $.post('railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });
@@ -216,12 +216,12 @@
         username = $('#username').val();
         password = $('#password').val();
 
-        $.post('/inputadmin', {
+        $.post('railway/inputadmin', {
             username: username,
             password: password
         }, function (data) {
             if (data === 'done') {
-                window.location.href = '/editadmin';
+                window.location.href = 'railway/editadmin';
                 window.alert('Input Data Admin Sukses');
             } else if (data === 'empty') {
                 window.alert('Data Tidak Boleh Kosong');
@@ -233,7 +233,7 @@
 
     $('#update').click(function () {
         id_admin = $('#id_update').val();
-        $.post('/cekadmin', {
+        $.post('railway/cekadmin', {
             id_admin: id_admin
         }, function (data) {
             if (data === 'found') {
@@ -245,7 +245,7 @@
                     password: password
                 }, function (data) {
                     if (data === 'updated') {
-                        window.location.href = '/editadmin';
+                        window.location.href = 'railway/editadmin';
                         window.alert('Update Data Admin Sukses');
                     } else if (data === 'empty') {
                         window.alert('Input Data Tidak Boleh Kosong');
@@ -267,16 +267,16 @@
 
     $('#deletes').click(function () {
         id_admin = $('#id_update').val();
-        $.post('/cekadmin', {
+        $.post('railway/cekadmin', {
             id_admin: id_admin
         }, function (data) {
             if (data === 'found') {
                 if (window.confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')) {
-                    $.post('/deleteadmin', {
+                    $.post('railway/deleteadmin', {
                         id_admin: id_admin
                     }, function (datas) {
                         if (datas === 'deleted') {
-                            window.location.href = '/editadmin';
+                            window.location.href = 'railway/editadmin';
                             window.alert('Data Admin Berhasil Dihapus');
                         } else {
                             window.alert('Data Admin Gagal Dihapus');

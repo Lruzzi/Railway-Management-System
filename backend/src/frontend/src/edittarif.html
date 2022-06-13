@@ -35,25 +35,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/railway/editrute">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/tarif">TARIF</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editadmin">ADMIN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editadmin">ADMIN</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
                         <p id="tempuser" class="text-primary center"></p>
                     </div>
-                    <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/logout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
@@ -191,10 +191,10 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/gettarif', {}, function (data) {
+        $.post('/railway/gettarif', {}, function (data) {
             $('#tarif').html(data);
         });
-        $.post('/getuser', {}, function (datas) {
+        $.post('/railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });
@@ -206,7 +206,7 @@
             harga: harga
         }, function (data) {
             if (data === 'done') {
-                window.location.href = '/tarif';
+                window.location.href = '/railway/tarif';
                 window.alert('Input Data Tarif Sukses');
             } else if (data === 'empty') {
                 window.alert('Data Tidak Boleh Kosong');
@@ -218,19 +218,19 @@
 
     $('#update').click(function () {
         id_tarif = $('#id_tarif').val();
-        $.post('/cektarif', {
+        $.post('/railway/cektarif', {
             id_tarif: id_tarif
         }, function (data) {
             if (data === 'found') {
                 id_rute = $('#rute_update').val();
                 harga = $('#harga_update').val();
-                $.post('/updatetarif', {
+                $.post('/railway/updatetarif', {
                     id_tarif: id_tarif,
                     id_rute: id_rute,
                     harga: harga
                 }, function (data) {
                     if (data === 'updated') {
-                        window.location.href = '/tarif';
+                        window.location.href = '/railway/tarif';
                         window.alert('Update Data Tarif Sukses');
                     } else if (data === 'empty') {
                         window.alert('Data Tidak Boleh Kosong');
@@ -250,16 +250,16 @@
 
     $('#deletes').click(function () {
         id_tarif = $('#id_tarif').val();
-        $.post('/cektarif', {
+        $.post('/railway/cektarif', {
             id_tarif: id_tarif
         }, function (data) {
             if (data === 'found') {
                 if (window.confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')) {
-                    $.post('/deletetarif', {
+                    $.post('/railway/deletetarif', {
                         id_tarif: id_tarif
                     }, function (datas) {
                         if (datas === 'deleted') {
-                            window.location.href = '/tarif';
+                            window.location.href = '/railway/tarif';
                             window.alert('Data Tarif Berhasil Dihapus');
                         } else {
                             window.alert('Data Tarif Gagal Dihapus');

@@ -35,22 +35,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/railway/editrute">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/tarif">TARIF</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
                         <p id="tempuser" class="text-primary center"></p>
                     </div>
-                    <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/logout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
@@ -71,7 +71,7 @@
                         <h2>SILAHKAN KEMBALI KE MENU AWAL</h2>
                     </div>
                     <div>
-                        <a href="/admin" class="btn btn-primary">KEMBALI</a>
+                        <a href="/railway/editrute" class="btn btn-primary">KEMBALI</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/getuser', {}, function (datas) {
+        $.post('/railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });

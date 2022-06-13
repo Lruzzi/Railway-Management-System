@@ -40,25 +40,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/railway/editrute">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/tarif">TARIF</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editadmin">ADMIN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editadmin">ADMIN</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
                         <p class="text-primary center" id="tempuser" >helo</p>
                     </div>
-                    <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/logout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
@@ -240,10 +240,10 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/getrute', {}, function (data) {
+        $.post('/railway/getRute', {}, function (data) {
             $('#rute').html(data);
         });
-        $.post('/getuser', {}, function (datas) {
+        $.post('/railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });
@@ -255,7 +255,7 @@
         waktu_tib = $('#waktu_tib').val();
         jarak = $('#jarak').val();
 
-        $.post('/inputrute', {
+        $.post('/railway/inputrute', {
             id_kereta: id_kereta,
             stasiun_ber: stasiun_ber,
             waktu_ber: waktu_ber,
@@ -264,7 +264,7 @@
             jarak: jarak
         }, function (data) {
             if (data === 'done') {
-                window.location.href = '/admin';
+                window.location.href = '/railway/editrute';
                 window.alert('Input Data Rute Sukses');
             } else if (data === 'empty') {
                 window.alert('Data Tidak Boleh Kosong');
@@ -276,7 +276,7 @@
 
     $('#update').click(function () {
         id_rute = $('#id_update').val();
-        $.post('/cekrute', {
+        $.post('/railway/cekrute', {
             id_rute: id_rute
         }, function (data) {
             if (data === 'found') {
@@ -286,7 +286,7 @@
                 stuj = $('#stuj_update').val();
                 wtib = $('#wtib_update').val();
                 jar = $('#jar_update').val();
-                $.post('/updaterute', {
+                $.post('/railway/updaterute', {
                     id_rute: id_rute,
                     ker: ker,
                     sber: sber,
@@ -296,7 +296,7 @@
                     jar: jar
                 }, function (data) {
                     if (data === 'updated') {
-                        window.location.href = '/admin';
+                        window.location.href = '/railway/editrute';
                         window.alert('Update Data Rute Sukses');
                     } else if (data === 'empty') {
                         window.alert('Input Tidak Boleh Kosong');
@@ -316,7 +316,7 @@
 
     $('#deletes').click(function () {
         id_rute = $('#id_update').val();
-        $.post('/cekrute', {
+        $.post('/railway/cekrute', {
             id_rute: id_rute
         }, function (data) {
             if (data === 'found') {
@@ -325,7 +325,7 @@
                         id_rute: id_rute
                     }, function (datas) {
                         if (datas === 'deleted') {
-                            window.location.href = '/admin';
+                            window.location.href = '/railway/editrute';
                             window.alert('Data Rute Berhasil Dihapus');
                         } else {
                             window.alert('Data Rute Gagal Dihapus');

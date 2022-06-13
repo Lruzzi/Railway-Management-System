@@ -35,25 +35,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/admin">RUTE</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-left-style:solid;border-right-style: solid;" href="/railway/editrute">RUTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editstasiun">STASIUN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editstasiun">STASIUN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editkereta">KERETA</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editkereta">KERETA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/tarif">TARIF</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/tarif">TARIF</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/editadmin">ADMIN</a>
+                            <a class="nav-link" style="color:white;border-color: white;border-right-style: solid;" href="/railway/editadmin">ADMIN</a>
                         </li>
                     </ul>
                     <div class="mr-auto">
                         <p id="tempuser" class="text-primary center"></p>
                     </div>
-                    <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <form class="form-inline my-2 my-lg-0" action="/railway/logout">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout">LOGOUT</button>
                     </form>
                 </div>
@@ -214,10 +214,10 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('/getkereta', {}, function (data) {
+        $.post('/railway/getkereta', {}, function (data) {
             $('#kereta').html(data);
         });
-        $.post('/getuser', {}, function (datas) {
+        $.post('/railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });
@@ -227,14 +227,14 @@
         tahun_pembuatan = $('#tahun_pembuatan').val();
         tahun_aktif = $('#tahun_aktif').val();
 
-        $.post('/inputkereta', {
+        $.post('/railway/inputkereta', {
             nama_kereta: nama_kereta,
             kapasitas: kapasitas,
             tahun_pembuatan: tahun_pembuatan,
             tahun_aktif: tahun_aktif
         }, function (data) {
             if (data === 'done') {
-                window.location.href = '/editkereta';
+                window.location.href = '/railway/editkereta';
                 window.alert('Input Data Kereta Sukses');
             } else if (data === 'empty') {
                 window.alert('Data Tidak Boleh Kosong');
@@ -246,7 +246,7 @@
 
     $('#update').click(function () {
         id_kereta = $('#id_update').val();
-        $.post('/cekkereta', {
+        $.post('/railway/cekkereta', {
             id_kereta: id_kereta
         }, function (data) {
             if (data === 'found') {
@@ -254,7 +254,7 @@
                 kapasitas_kereta = $('#kapa_update').val();
                 tahun_buat = $('#buat_update').val();
                 tahun_aktif = $('#aktif_update').val();
-                $.post('/updatekereta', {
+                $.post('/railway/updatekereta', {
                     id_kereta: id_kereta,
                     nama_kereta: nama_kereta,
                     kapasitas_kereta: kapasitas_kereta,
@@ -262,7 +262,7 @@
                     tahun_aktif: tahun_aktif
                 }, function (data) {
                     if (data === 'updated') {
-                        window.location.href = '/editkereta';
+                        window.location.href = '/railway/editkereta';
                         window.alert('Update Data Kereta Sukses');
                     } else if (data === 'empty') {
                         window.alert('Input Data Tidak Boleh Kosong');
@@ -282,7 +282,7 @@
 
     $('#deletes').click(function () {
         id_kereta = $('#id_update').val();
-        $.post('/cekkereta', {
+        $.post('/railway/cekkereta', {
             id_kereta: id_kereta
         }, function (data) {
             if (data === 'found') {
@@ -291,7 +291,7 @@
                         id_kereta: id_kereta
                     }, function (datas) {
                         if (datas === 'deleted') {
-                            window.location.href = '/editkereta';
+                            window.location.href = '/railway/editkereta';
                             window.alert('Data Kereta Berhasil Dihapus');
                         } else {
                             window.alert('Data Kereta Gagal Dihapus');
