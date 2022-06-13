@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const railwayController = require('../controllers/railway.controller');
+const path = require('path');
+const home = path.join(__dirname, '../frontend/src/home.html');
 
 //Halaman untuk umum (home page) menampilkan informasi rute join table kereta, stasiun, dan tarif
 router.get("/home", (req, res) => {
-    res.sendFile(path.join(__dirname + "/frontend/src/home.html"));
+    res.sendFile(home);
   });
   
   //Halaman untuk umum menampilkan table kereta
-  router.get("/kereta", (req, res) => {
-    res.sendFile(path.join(__dirname + "/frontend/kereta.html"));
-  });
+router.get("/kereta", (req, res) => {
+    res.sendFile(path.join(__dirname + ".../frontend/kereta.html"));
+});
   
   //Halaman untuk umun menampilkan table stasiun
   router.get("/stasiun", (req, res) => {
