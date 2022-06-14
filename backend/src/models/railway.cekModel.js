@@ -21,12 +21,18 @@ async function cekSuper(username) {
 async function cekTarif(req){
     var id_tarif = req.body.id_tarif;
     console.log(id_tarif);
-    const query = `select * from tarif where id_tarif = ${id_tarif};`
-    const result = await db.query(query);
-    if(result.rowCount === 0){
-        return ('notfound')
+    if(id_tarif){
+        const query = `select * from tarif where id_tarif = ${id_tarif};`
+        const result = await db.query(query);
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        return ('found')
     }
-    return ('found')
+    else{
+        return('empty')
+    }
+    
 }
 
 module.exports = {

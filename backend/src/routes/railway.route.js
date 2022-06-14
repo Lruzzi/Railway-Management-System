@@ -116,7 +116,8 @@ router.get("/kereta", (req, res) => {
   //input
   router.post("/inputtarif", inputController.inputTarif);
 
-  //updata
+  //update
+  router.post("/updatetarif", updateController.updateTarif);
 
   //delete
   router.post("/deletetarif", deleteController.deleteTarif);
