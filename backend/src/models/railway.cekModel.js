@@ -48,8 +48,41 @@ async function cekIdRute(req){
     
 }
 
+async function cekAdmin(req){
+    var id_admin = req.body.id_admin;
+    console.log(id_admin)
+    const query = `select * from admin where id_admin = '${id_admin}';`
+    const result = await db.query(query);
+    if(id_admin){
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        else{
+            return ('found')
+        }
+    }
+    else{
+        return('empty')
+    }
+    
+}
+
+async function cekUsername(req){
+    var username = req.body.username;
+    const query = `select * from admin where username like '${username}';`
+    const result = await db.query(query);
+    if(result.rowCount === 0){
+        return ('nottaken')
+    }
+    else{
+        return ('taken')
+    }
+}
+
 module.exports = {
     cekSuper,
     cekTarif,
-    cekIdRute
+    cekIdRute,
+    cekAdmin,
+    cekUsername
 }

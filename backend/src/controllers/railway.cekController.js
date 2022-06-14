@@ -32,9 +32,32 @@ async function cekIdRute(req,res){
     }
 }
 
+async function cekAdmin(req,res){
+    try{
+        const result = await railway.cekAdmin(req);
+        console.log(result)
+        res.json(result)
+    }
+    catch(err){
+        return err;
+    }
+}
+
+async function cekUsername(req,res){
+    try{
+        const result = await railway.cekUsername(req);
+        console.log(result)
+        res.json(result)
+    }
+    catch(err){
+        return err;
+    }
+}
+
 module.exports = {
     cekSuper,
     cekTarif,
-    cekIdRute
+    cekIdRute,
+    cekAdmin,
+    cekUsername
 }
-

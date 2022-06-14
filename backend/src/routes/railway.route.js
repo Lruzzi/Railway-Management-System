@@ -115,20 +115,24 @@ router.get("/kereta", (req, res) => {
 
   //input
   router.post("/inputtarif", inputController.inputTarif);
+  router.post("/inputadmin", inputController.inputAdmin);
 
   //update
   router.post("/updatetarif", updateController.updateTarif);
+  router.post("/updateadmin", updateController.updateAdmin);
 
   //delete
   router.post("/deletetarif", deleteController.deleteTarif);
+  router.post("/deleteadmin", deleteController.deleteAdmin);
 
 
   //cek
   router.post("/cektarif", cekController.cekTarif);
   router.post("/cekidrute", cekController.cekIdRute);
+  router.post("/cekadmin", cekController.cekAdmin);
+  router.post("/cekusername", cekController.cekUsername);
 
   //Log
-
   router.post("/login", logController.login);
 
   router.get("/logout", (req, res) => {

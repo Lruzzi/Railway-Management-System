@@ -11,6 +11,18 @@ async function deleteTarif(req,res){
     }
 }
 
+async function deleteAdmin(req,res){
+    try{
+        const result = await railway.deleteAdmin(req);
+        console.log(result)
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
-    deleteTarif
+    deleteTarif,
+    deleteAdmin
 }

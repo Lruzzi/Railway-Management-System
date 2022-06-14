@@ -221,7 +221,7 @@
             password: password
         }, function (data) {
             if (data === 'done') {
-                window.location.href = 'railway/editadmin';
+                window.location.href = '/railway/editadmin';
                 window.alert('Input Data Admin Sukses');
             } else if (data === 'empty') {
                 window.alert('Data Tidak Boleh Kosong');
@@ -239,7 +239,7 @@
             if (data === 'found') {
                 username = $('#user_update').val();
                 password = $('#pass_update').val();
-                $.post('/updateadmin', {
+                $.post('/railway/updateadmin', {
                     id_admin: id_admin,
                     username: username,
                     password: password
@@ -272,7 +272,7 @@
         }, function (data) {
             if (data === 'found') {
                 if (window.confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')) {
-                    $.post('railway/deleteadmin', {
+                    $.post('/railway/deleteadmin', {
                         id_admin: id_admin
                     }, function (datas) {
                         if (datas === 'deleted') {

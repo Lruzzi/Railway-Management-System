@@ -10,6 +10,17 @@ async function updateTarif(req,res){
     }
 }
 
+async function updateAdmin(req,res){
+    try{
+        const result = await railway.updateAdmin(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
-    updateTarif
+    updateTarif,
+    updateAdmin
 }

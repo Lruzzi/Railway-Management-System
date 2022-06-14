@@ -11,6 +11,18 @@ async function inputTarif(req,res){
     }
 }
 
+async function inputAdmin(req,res){
+    try{
+        const result = await railway.inputAdmin(req);
+        console.log(result)
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
-    inputTarif
+    inputTarif,
+    inputAdmin
 }

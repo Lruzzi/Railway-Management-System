@@ -19,6 +19,21 @@ async function deleteTarif(req) {
     }
 }
 
+async function deleteAdmin(req) {
+    var id_admin = req.body.id_admin;
+
+    const query = `delete from admin where id_admin = '${id_admin}';` //query delete data admin
+    const result = await db.query(query);
+    if(result){
+        return('deleted');
+    }
+    else{
+        return('failed');
+    }
+}
+
+
 module.exports = {
-    deleteTarif
+    deleteTarif,
+    deleteAdmin
 }

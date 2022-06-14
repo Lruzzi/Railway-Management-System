@@ -20,6 +20,28 @@ async function inputTarif(req) {
     }
 }
 
+async function inputAdmin(req) {
+    var username = req.body.username;
+    var password = req.body.password;
+    if(username && password){
+        hash = await helper.hashPassword(password);
+        const query = `insert into admin (username,password,super_admin) values ('${username}','${hash}',false);`; //query insert data admin
+        const result = await db.query(query);
+        if(result){
+            return('done');
+        }
+        else{
+            return('faile');
+        }
+    }
+    else{
+        return('empty');
+    }
+}
+
+
+
 module.exports = {
-    inputTarif
+    inputTarif,
+    inputAdmin
 }
