@@ -3,7 +3,7 @@ const railway = require('../models/railway.cekModel');
 async function cekSuper(username){
     try{
         const result = await railway.cekSuper(username);
-        console.log(result)
+        console.log('contorl'+result)
         return result;
     }
     catch(err){
@@ -11,7 +11,18 @@ async function cekSuper(username){
     }
 }
 
+async function cekTarif(req,res){
+    try{    
+        const result = await railway.cekTarif(req);
+        res.json(result)
+    }
+    catch(err){
+        return err;
+    }
+}
+
 module.exports = {
-    cekSuper
+    cekSuper,
+    cekTarif
 }
 
