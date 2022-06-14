@@ -3,7 +3,6 @@ const railway = require('../models/railway.deleteModel');
 async function deleteTarif(req,res){
     try{
         const result = await railway.deleteTarif(req);
-        console.log(result)
         res.json(result);
     }
     catch(err){
@@ -14,6 +13,16 @@ async function deleteTarif(req,res){
 async function deleteAdmin(req,res){
     try{
         const result = await railway.deleteAdmin(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
+async function deleteKereta(req,res){
+    try{
+        const result = await railway.deleteKereta(req);
         console.log(result)
         res.json(result);
     }
@@ -24,5 +33,6 @@ async function deleteAdmin(req,res){
 
 module.exports = {
     deleteTarif,
-    deleteAdmin
+    deleteAdmin,
+    deleteKereta
 }

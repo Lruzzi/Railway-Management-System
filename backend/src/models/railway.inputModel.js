@@ -39,9 +39,29 @@ async function inputAdmin(req) {
     }
 }
 
+async function inputKereta(req) {
+    var nama_kereta = req.body.nama_kereta;
+    var kapasitas = req.body.kapasitas;
+    var tahun_pembuatan = req.body.tahun_pembuatan;
+    var tahun_aktif = req.body.tahun_aktif;
 
+    console.log(nama_kereta, kapasitas, tahun_pembuatan, tahun_aktif);
+
+    if (nama_kereta && kapasitas && tahun_pembuatan && tahun_aktif) {
+        const query = `insert into kereta (nama_kereta,kapasitas_kereta,tahun_buat,tahun_aktif) values ('${nama_kereta}','${kapasitas}','${tahun_pembuatan}', '${tahun_aktif}');`; //query insert data kereta
+        const result = await db.query(query);
+        if (result) {
+            return ('done');
+        } else {
+            return ('fail');
+        }
+    } else {
+        return ('empty');
+    }
+}
 
 module.exports = {
     inputTarif,
-    inputAdmin
+    inputAdmin,
+    inputKereta
 }

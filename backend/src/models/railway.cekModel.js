@@ -79,10 +79,30 @@ async function cekUsername(req){
     }
 }
 
+async function cekKereta(req){
+    var id_kereta = req.body.id_kereta;
+    const query = `select * from kereta where id_kereta = '${id_kereta}';`
+    const result = await db.query(query);
+    if(id_kereta){
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        else{
+            return ('found')
+        }
+    }
+    else{
+        return('empty')
+    }
+    
+}
+
+
 module.exports = {
     cekSuper,
     cekTarif,
     cekIdRute,
     cekAdmin,
-    cekUsername
+    cekUsername,
+    cekKereta
 }

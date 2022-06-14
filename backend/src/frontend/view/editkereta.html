@@ -287,7 +287,7 @@
         }, function (data) {
             if (data === 'found') {
                 if (window.confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')) {
-                    $.post('/deletekereta', {
+                    $.post('/railway/deletekereta', {
                         id_kereta: id_kereta
                     }, function (datas) {
                         if (datas === 'deleted') {

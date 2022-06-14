@@ -99,31 +99,29 @@ router.get("/kereta", (req, res) => {
     }
   });
 
+  //get data
   router.post("/getData", tableController.getData);
-
   router.post("/getKereta", tableController.getKereta);
-
   router.post("/getStasiun", tableController.getStasiun);
-
   router.post("/getRute", tableController.getRute);
-
   router.post("/getTarif", tableController.getTarif);
-
   router.post("/getAdmin", tableController.getAdmin);
-
   router.post("/getuser", logController.getUser);
 
   //input
   router.post("/inputtarif", inputController.inputTarif);
   router.post("/inputadmin", inputController.inputAdmin);
+  router.post("/inputkereta", inputController.inputKereta);
 
   //update
   router.post("/updatetarif", updateController.updateTarif);
   router.post("/updateadmin", updateController.updateAdmin);
+  router.post("/updatekereta", updateController.updateKereta);
 
   //delete
   router.post("/deletetarif", deleteController.deleteTarif);
   router.post("/deleteadmin", deleteController.deleteAdmin);
+  router.post("/deletekereta", deleteController.deleteKereta);
 
 
   //cek
@@ -131,6 +129,7 @@ router.get("/kereta", (req, res) => {
   router.post("/cekidrute", cekController.cekIdRute);
   router.post("/cekadmin", cekController.cekAdmin);
   router.post("/cekusername", cekController.cekUsername);
+  router.post("/cekkereta", cekController.cekKereta);
 
   //Log
   router.post("/login", logController.login);

@@ -54,10 +54,22 @@ async function cekUsername(req,res){
     }
 }
 
+async function cekKereta(req,res){
+    try{
+        const result = await railway.cekKereta(req);
+        res.json(result)
+    }
+    catch(err){
+        return err;
+    }
+}
+
+
 module.exports = {
     cekSuper,
     cekTarif,
     cekIdRute,
     cekAdmin,
-    cekUsername
+    cekUsername,
+    cekKereta
 }

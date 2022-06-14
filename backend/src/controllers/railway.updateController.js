@@ -20,7 +20,18 @@ async function updateAdmin(req,res){
     }
 }
 
+async function updateKereta(req,res){
+    try{
+        const result = await railway.updateKereta(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     updateTarif,
-    updateAdmin
+    updateAdmin,
+    updateKereta
 }

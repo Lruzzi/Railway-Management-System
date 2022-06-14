@@ -32,8 +32,22 @@ async function deleteAdmin(req) {
     }
 }
 
+async function deleteKereta(req) {
+    var id_kereta = req.body.id_kereta;
+    console.log(id_kereta);
+    const query = `delete from kereta where id_kereta = '${id_kereta}';` //query delete data kereta
+    const result = await db.query(query);
+    if(result){
+        return('deleted');
+    }
+    else{
+        return('failed');
+    }
+}
+
 
 module.exports = {
     deleteTarif,
-    deleteAdmin
+    deleteAdmin,
+    deleteKereta
 }
