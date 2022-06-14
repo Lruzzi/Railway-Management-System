@@ -114,6 +114,8 @@ router.get("/kereta", (req, res) => {
 
   router.post("/getuser", logController.getUser);
 
+  router.post("/inputtarif", inputController.inputTarif);
+
   router.get("/logout", (req, res) => {
     req.session.destroy((err) => {
       if (err) {

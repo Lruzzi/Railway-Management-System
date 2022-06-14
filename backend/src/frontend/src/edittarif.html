@@ -201,7 +201,7 @@
     $('#submits').click(function () {
         id_rute = $('#id_rute').val();
         harga = $('#harga').val();
-        $.post('/inputtarif', {
+        $.post('/railway/inputtarif', {
             id_rute: id_rute,
             harga: harga
         }, function (data) {
