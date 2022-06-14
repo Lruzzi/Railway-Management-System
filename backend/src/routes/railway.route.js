@@ -125,6 +125,7 @@ router.get("/kereta", (req, res) => {
 
   //cek
   router.post("/cektarif", cekController.cekTarif);
+  router.post("/cekidrute", cekController.cekIdRute);
 
   //Log
 

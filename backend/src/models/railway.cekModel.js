@@ -20,7 +20,6 @@ async function cekSuper(username) {
 
 async function cekTarif(req){
     var id_tarif = req.body.id_tarif;
-    console.log(id_tarif);
     if(id_tarif){
         const query = `select * from tarif where id_tarif = ${id_tarif};`
         const result = await db.query(query);
@@ -35,7 +34,22 @@ async function cekTarif(req){
     
 }
 
+async function cekIdRute(req){
+    var id_rute = req.body.id_rute;
+    console.log(id_rute)
+    const query = `select * from tarif where id_rute = ${id_rute};`
+    const result = await db.query(query);
+    if(result.rowCount === 0){
+        return ('notfound')
+    }
+    else{
+        return ('exist')
+    }
+    
+}
+
 module.exports = {
     cekSuper,
-    cekTarif
+    cekTarif,
+    cekIdRute
 }

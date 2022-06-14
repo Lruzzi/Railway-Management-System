@@ -21,8 +21,20 @@ async function cekTarif(req,res){
     }
 }
 
+async function cekIdRute(req,res){
+    try{
+        const result = await railway.cekIdRute(req);
+        console.log(result)
+        res.json(result)
+    }
+    catch(err){
+        return err;
+    }
+}
+
 module.exports = {
     cekSuper,
-    cekTarif
+    cekTarif,
+    cekIdRute
 }
 

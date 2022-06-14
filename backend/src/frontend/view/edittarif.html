@@ -190,6 +190,17 @@
     }
 </script>
 <script>
+    $("#id_rute").change(function(){
+    id_rute = $('#id_rute').val();
+    $.post('/railway/cekidrute', {id_rute: id_rute}, function (datas) {
+        if(datas === 'exist'){
+            alert('ID RUTE SUDAH ADA');
+        }
+        
+    });
+  });
+</script>
+<script>
     jQuery(document).ready(function ($) {
         $.post('/railway/gettarif', {}, function (data) {
             $('#tarif').html(data);
