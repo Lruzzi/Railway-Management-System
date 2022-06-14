@@ -152,6 +152,7 @@ async function getTarif(req,res){
 async function getAdmin(req,res){
     try{
         const result = await railway.getAdmin();
+        console.log(result)
         res.write(`<table>
                     <tr>
                     <th scope="col">ID ADMIN</th>

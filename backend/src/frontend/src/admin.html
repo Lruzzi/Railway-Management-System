@@ -195,7 +195,7 @@
 <script>
         $("#username").change(function(){
         username = $('#username').val();
-        $.post('railway/cekusername', {username: username}, function (datas) {
+        $.post('/railway/cekusername', {username: username}, function (datas) {
             if(datas === 'taken'){
                 alert('username tidak bisa digunakan');
             }
@@ -205,10 +205,10 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
-        $.post('railway/getadmin', {}, function (data) {
+        $.post('/railway/getAdmin', {}, function (data) {
             $('#admin').html(data);
         });
-        $.post('railway/getuser', {}, function (datas) {
+        $.post('/railway/getuser', {}, function (datas) {
             $('#tempuser').html(datas);
         });
     });
@@ -216,7 +216,7 @@
         username = $('#username').val();
         password = $('#password').val();
 
-        $.post('railway/inputadmin', {
+        $.post('/railway/inputadmin', {
             username: username,
             password: password
         }, function (data) {
@@ -233,7 +233,7 @@
 
     $('#update').click(function () {
         id_admin = $('#id_update').val();
-        $.post('railway/cekadmin', {
+        $.post('/railway/cekadmin', {
             id_admin: id_admin
         }, function (data) {
             if (data === 'found') {
@@ -245,7 +245,7 @@
                     password: password
                 }, function (data) {
                     if (data === 'updated') {
-                        window.location.href = 'railway/editadmin';
+                        window.location.href = '/railway/editadmin';
                         window.alert('Update Data Admin Sukses');
                     } else if (data === 'empty') {
                         window.alert('Input Data Tidak Boleh Kosong');
@@ -267,7 +267,7 @@
 
     $('#deletes').click(function () {
         id_admin = $('#id_update').val();
-        $.post('railway/cekadmin', {
+        $.post('/railway/cekadmin', {
             id_admin: id_admin
         }, function (data) {
             if (data === 'found') {
@@ -276,7 +276,7 @@
                         id_admin: id_admin
                     }, function (datas) {
                         if (datas === 'deleted') {
-                            window.location.href = 'railway/editadmin';
+                            window.location.href = '/railway/editadmin';
                             window.alert('Data Admin Berhasil Dihapus');
                         } else {
                             window.alert('Data Admin Gagal Dihapus');

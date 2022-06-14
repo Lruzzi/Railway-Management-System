@@ -64,6 +64,7 @@ async function getTarif(req, res) {
 async function getAdmin(req, res) {
     const query = "select id_admin,username,super_admin from admin;";
     const result = await db.query(query);
+    console.log(result)
     if(result.rowCount === 0){
         return {
             status: false,
