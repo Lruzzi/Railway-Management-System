@@ -1,13 +1,4 @@
-const railway = require('../models/railway.model');
-
-async function login(req,res){
-    try{
-        const result = await railway.login(req);
-        res.json(result);
-    }catch(err){
-        res.json(err);
-    }
-}
+const railway = require('../models/railway.tableModel');
 
 async function getData(req,res){
     try{
@@ -158,22 +149,35 @@ async function getTarif(req,res){
     }
 }
 
-async function cekSuper(username){
+async function getAdmin(req,res){
     try{
-        const result = await railway.cekSuper(username);
-        return result;
+        const result = await railway.getAdmin();
+        res.write(`<table>
+                    <tr>
+                    <th scope="col">ID ADMIN</th>
+                    <th scope="col">USERNAME</th>
+                    <th scope="col">SUPER ADMIN</th>
+                    </tr>`);
+        for (row of result.rows) {
+        res.write(`<tr>
+                    <td>${row["id_admin"]}</td>
+                    <td>${row["username"]}</td>
+                    <td>${row["super_admin"]}</td>
+                    </tr>`);
+        }
+        res.end(`</tbody>
+                </table>`);
     }
     catch(err){
-        return err;
+        res.json(err);
     }
 }
 
 module.exports = {
-    login,
     getData,
     getKereta,
     getStasiun,
     getRute,
     getTarif,
-    cekSuper
+    getAdmin,
 }

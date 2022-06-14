@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const railwayController = require('../controllers/railway.controller');
+const tableController = require('../controllers/railway.tableController');
+const logController = require('../controllers/railway.logController');
+const inputController = require('../controllers/railway.inputController');
+const updateController = require('../controllers/railway.updateController');
+const deleteController = require('../controllers/railway.deleteController');
+const cekController = require('../controllers/railway.cekController');
 const path = require('path');
 var temp
 
@@ -80,7 +85,7 @@ router.get("/kereta", (req, res) => {
   router.get("/editadmin", async function (req, res, next) {
     temp = req.session;
     if (temp.username) {
-      cek = await railwayController.cekSuper(temp.username);
+      cek = await cekController.cekSuper(temp.username);
       if(cek === 'super'){
         res.sendFile(path.join(__dirname, '../frontend/src/admin.html'));
       }
@@ -93,17 +98,21 @@ router.get("/kereta", (req, res) => {
     }
   });
 
-  router.post("/getData", railwayController.getData);
+  router.post("/getData", tableController.getData);
 
-  router.post("/getKereta", railwayController.getKereta);
+  router.post("/getKereta", tableController.getKereta);
 
-  router.post("/getStasiun", railwayController.getStasiun);
+  router.post("/getStasiun", tableController.getStasiun);
 
-  router.post("/login", railwayController.login);
+  router.post("/login", logController.login);
 
-  router.post("/getRute", railwayController.getRute);
+  router.post("/getRute", tableController.getRute);
 
-  router.post("/getTarif", railwayController.getTarif);
+  router.post("/getTarif", tableController.getTarif);
+
+  router.post("/getAdmin", tableController.getAdmin);
+
+  router.post("/getuser", logController.getUser);
 
   router.get("/logout", (req, res) => {
     req.session.destroy((err) => {
