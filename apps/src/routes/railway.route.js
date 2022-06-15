@@ -143,5 +143,9 @@ router.get("/kereta", (req, res) => {
     });
   });
 
+  router.get("/image", (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/favicon-ikn.png'));
+  });
+
 
 module.exports = router;
