@@ -1,7 +1,12 @@
 This is my first website called Railway Management System
 Using PostgreSQL, Express, and NodeJS
-This will be updated since its all in file javascript and i want to divide the html and javascript file in the future and i want to add css file also
-I made it for final project on Lab Data based System at Computer Engineering University of Indonesia 2022
+This project has updated and now is version 3.0 or third form (apps folder)
+
+The First Form means that the html include in javascript file called index.js
+
+The Second Form means that the html is separate with javascript file but the index.js is not well build (not recommended code)
+
+The Third Form or Apps Folder is like second form, but now the backend divided into some folder like route, controller, model, middleware, and utils using export express.
 
 Overview:
 This website made for admin to manage the database.
