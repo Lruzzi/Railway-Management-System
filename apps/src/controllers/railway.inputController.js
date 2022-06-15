@@ -23,6 +23,7 @@ async function inputAdmin(req,res){
 async function inputKereta(req,res){
     try{
         const result = await railway.inputKereta(req);
+        console.log(result)
         res.json(result);
     }
     catch(err){
@@ -33,6 +34,7 @@ async function inputKereta(req,res){
 async function inputStasiun(req,res){
     try{
         const result = await railway.inputStasiun(req);
+        console.log(result)
         res.json(result);
     }
     catch(err){

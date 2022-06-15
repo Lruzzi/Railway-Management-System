@@ -84,6 +84,21 @@ async function cekRute(req,res){
     }
 }
 
+async function cekNamaKereta(nama_kereta){
+        const result = await railway.cekNamaKereta(nama_kereta);
+        return(result);
+}
+
+async function cekNamaStasiun(nama_stasiun){
+        const result = await railway.cekNamaStasiun(nama_stasiun);
+        return(result);
+}
+
+async function cekUser(username){
+        const result = await railway.cekUser(username);
+        return(result);
+}
+
 
 module.exports = {
     cekSuper,
@@ -93,5 +108,8 @@ module.exports = {
     cekUsername,
     cekKereta,
     cekStasiun,
-    cekRute
+    cekRute,
+    cekNamaKereta,
+    cekNamaStasiun,
+    cekUser
 }

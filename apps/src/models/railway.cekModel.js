@@ -130,6 +130,49 @@ async function cekRute(req){
     }
 }
 
+async function cekNamaKereta(nama_kereta){
+    const query = `select * from kereta where nama_kereta like '${nama_kereta}';`
+    const result = await db.query(query);
+    if(nama_kereta){
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        else{
+            return ('found')
+        }
+    }
+    else{
+        return('empty')
+    }
+}
+
+async function cekNamaStasiun(nama_stasiun){
+    const query = `select * from stasiun where nama_stasiun like '${nama_stasiun}';`
+    const result = await db.query(query);
+    if(nama_stasiun){
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        else{
+            return ('found')
+        }
+    }
+    else{
+        return('empty')
+    }
+}
+
+async function cekUser(username){
+    const query = `select * from admin where username like '${username}';`
+    const result = await db.query(query);
+    if(result.rowCount === 0){
+        return ('notfound')
+    }
+    else{
+        return ('taken')
+    }
+}
+
 module.exports = {
     cekSuper,
     cekTarif,
@@ -138,5 +181,8 @@ module.exports = {
     cekUsername,
     cekKereta,
     cekStasiun,
-    cekRute
+    cekRute,
+    cekNamaKereta,
+    cekNamaStasiun,
+    cekUser
 }
