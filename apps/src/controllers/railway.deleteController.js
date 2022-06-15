@@ -41,10 +41,20 @@ async function deleteStasiun(req,res){
     }
 }
 
+async function deleteRute(req,res){
+    try{
+        const result = await railway.deleteRute(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
 
 module.exports = {
     deleteTarif,
     deleteAdmin,
     deleteKereta,
-    deleteStasiun
+    deleteStasiun,
+    deleteRute
 }

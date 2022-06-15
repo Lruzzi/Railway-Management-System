@@ -98,7 +98,6 @@ async function cekKereta(req){
 
 async function cekStasiun(req){
     var id_stasiun = req.body.id_stasiun;
-    console.log(id_stasiun)
     const query = `select * from stasiun where id_stasiun = '${id_stasiun}';`
     const result = await db.query(query);
     if(id_stasiun){
@@ -114,6 +113,22 @@ async function cekStasiun(req){
     }
 }
 
+async function cekRute(req){
+    var id_rute = req.body.id_rute;
+    const query = `select * from rute where id_rute = '${id_rute}';`
+    const result = await db.query(query);
+    if(id_rute){
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        else{
+            return ('found')
+        }
+    }
+    else{
+        return('empty')
+    }
+}
 
 module.exports = {
     cekSuper,
@@ -122,5 +137,6 @@ module.exports = {
     cekAdmin,
     cekUsername,
     cekKereta,
-    cekStasiun
+    cekStasiun,
+    cekRute
 }

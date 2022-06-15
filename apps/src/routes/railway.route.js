@@ -113,18 +113,21 @@ router.get("/kereta", (req, res) => {
   router.post("/inputadmin", inputController.inputAdmin);
   router.post("/inputkereta", inputController.inputKereta);
   router.post("/inputstasiun", inputController.inputStasiun);
+  router.post("/inputrute", inputController.inputRute);
 
   //update
   router.post("/updatetarif", updateController.updateTarif);
   router.post("/updateadmin", updateController.updateAdmin);
   router.post("/updatekereta", updateController.updateKereta);
-  router.post("/updateStasiun", updateController.updateStasiun);
+  router.post("/updatsStasiun", updateController.updateStasiun);
+  router.post("/updaterute", updateController.updateRute);
 
   //delete
   router.post("/deletetarif", deleteController.deleteTarif);
   router.post("/deleteadmin", deleteController.deleteAdmin);
   router.post("/deletekereta", deleteController.deleteKereta);
   router.post("/deletestasiun", deleteController.deleteStasiun);
+  router.post("/deleterute", deleteController.deleteRute);
 
 
   //cek
@@ -134,6 +137,7 @@ router.get("/kereta", (req, res) => {
   router.post("/cekusername", cekController.cekUsername);
   router.post("/cekkereta", cekController.cekKereta);
   router.post("/cekstasiun", cekController.cekStasiun);
+  router.post("/cekrute", cekController.cekRute);
 
   //Log
   router.post("/login", logController.login);

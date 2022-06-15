@@ -40,9 +40,20 @@ async function inputStasiun(req,res){
     }
 }
 
+async function inputRute(req,res){
+    try{
+        const result = await railway.inputRute(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     inputTarif,
     inputAdmin,
     inputKereta,
-    inputStasiun
+    inputStasiun,
+    inputRute
 }

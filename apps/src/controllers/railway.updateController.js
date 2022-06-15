@@ -40,9 +40,20 @@ async function updateStasiun(req,res){
     }
 }
 
+async function updateRute(req,res){
+    try{
+        const result = await railway.updateRute(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     updateTarif,
     updateAdmin,
     updateKereta,
-    updateStasiun
+    updateStasiun,
+    updateRute
 }

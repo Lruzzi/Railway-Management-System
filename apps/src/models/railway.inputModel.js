@@ -80,9 +80,33 @@ async function inputStasiun(req) {
     }
 }
 
+async function inputRute(req) {
+    var id_kereta = req.body.id_kereta;
+    var id_stasiun_ber = req.body.stasiun_ber;
+    var waktu_ber = req.body.waktu_ber;
+    var id_stasiun_tib = req.body.stasiun_tib;
+    var waktu_tib = req.body.waktu_tib;
+    var jarak = req.body.jarak;
+
+    if(id_kereta && id_stasiun_ber && waktu_ber && id_stasiun_tib && waktu_tib && jarak){
+        const query = `insert into rute (id_kereta, id_stasiun_berangkat, waktu_berangkat, id_stasiun_tiba, waktu_tiba, jarak) values ('${id_kereta}','${id_stasiun_ber}','${waktu_ber}','${id_stasiun_tib}','${waktu_tib}', '${jarak}');`; //query tambahkan user baru ke database
+        const result = await db.query(query);
+        if (result) {
+            return ('done');
+        } else {
+            return ('fail');
+        }
+    }
+    else{
+        return('empty');
+    }
+}
+
+
 module.exports = {
     inputTarif,
     inputAdmin,
     inputKereta,
-    inputStasiun
+    inputStasiun,
+    inputRute
 }

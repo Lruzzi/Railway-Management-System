@@ -65,9 +65,18 @@ async function cekKereta(req,res){
 }
 
 async function cekStasiun(req,res){
-    console.log(req.body.id_stasiun)
     try{
         const result = await railway.cekStasiun(req);
+        res.json(result)
+    }
+    catch(err){
+        return err;
+    }
+}
+
+async function cekRute(req,res){
+    try{
+        const result = await railway.cekRute(req);
         res.json(result)
     }
     catch(err){
@@ -83,5 +92,6 @@ module.exports = {
     cekAdmin,
     cekUsername,
     cekKereta,
-    cekStasiun
+    cekStasiun,
+    cekRute
 }

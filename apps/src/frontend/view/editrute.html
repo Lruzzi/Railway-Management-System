@@ -323,7 +323,7 @@
         }, function (data) {
             if (data === 'found') {
                 if (window.confirm('Apakah Anda Yakin Ingin Menghapus Data Rute Ini?')) {
-                    $.post('/deleterute', {
+                    $.post('/railway/deleterute', {
                         id_rute: id_rute
                     }, function (datas) {
                         if (datas === 'deleted') {
