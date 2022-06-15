@@ -1,6 +1,8 @@
 This is my first website called Railway Management System
+
 Using PostgreSQL, Express, and NodeJS
-This project has updated and now is version 3.0 or third form (apps folder)
+
+This project has been updated and now is version 3.0 or third form (apps folder)
 
 The First Form means that the html include in javascript file called index.js
 
