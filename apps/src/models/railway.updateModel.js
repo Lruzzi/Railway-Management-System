@@ -3,6 +3,7 @@ const helper = require('../utils/helper.util');
 const tarif = require('../middleware/railway.tarifquery');
 const admin = require('../middleware/railway.adminquery');
 const kereta = require('../middleware/railway.keretaquery');
+const stasiun = require('../middleware/railway.stasiunquery');
 
 async function updateTarif(req) {
     var id_tarif = req.body.id_tarif;
@@ -60,9 +61,30 @@ async function updateKereta(req) {
     }
 }
 
+async function updateStasiun(req) {
+    var id_stasiun = req.body.id_stasiun;
+    var nama_stasiun = req.body.nama_stasiun;
+    var daerah_stasiun = req.body.daerah_stasiun;
+    var tahun_bangun = req.body.tahun_bangun;
+
+    console.log(id_stasiun, nama_stasiun, daerah_stasiun, tahun_bangun);
+
+    const query = await stasiun.query(id_stasiun, nama_stasiun, daerah_stasiun, tahun_bangun);
+    if(query=== 'empty'){
+        return ('empty');
+    }
+    const result = await db.query(query);
+    if(result){
+        return('updated');
+    }
+    else{
+        return('failed');
+    }
+}
 
 module.exports = {
     updateTarif,
     updateAdmin,
-    updateKereta
+    updateKereta,
+    updateStasiun
 }

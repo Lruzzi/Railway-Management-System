@@ -93,8 +93,25 @@ async function cekKereta(req){
     }
     else{
         return('empty')
+    }    
+}
+
+async function cekStasiun(req){
+    var id_stasiun = req.body.id_stasiun;
+    console.log(id_stasiun)
+    const query = `select * from stasiun where id_stasiun = '${id_stasiun}';`
+    const result = await db.query(query);
+    if(id_stasiun){
+        if(result.rowCount === 0){
+            return ('notfound')
+        }
+        else{
+            return ('found')
+        }
     }
-    
+    else{
+        return('empty')
+    }
 }
 
 
@@ -104,5 +121,6 @@ module.exports = {
     cekIdRute,
     cekAdmin,
     cekUsername,
-    cekKereta
+    cekKereta,
+    cekStasiun
 }

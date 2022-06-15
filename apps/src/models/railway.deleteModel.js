@@ -45,9 +45,23 @@ async function deleteKereta(req) {
     }
 }
 
+async function deleteStasiun(req) {
+    var id_stasiun = req.body.id_stasiun;
+    console.log(id_stasiun);
+    const query = `delete from stasiun where id_stasiun = '${id_stasiun}';` //query delete data stasiun
+    const result = await db.query(query);
+    if(result){
+        return('deleted');
+    }
+    else{
+        return('failed');
+    }
+}
+
 
 module.exports = {
     deleteTarif,
     deleteAdmin,
-    deleteKereta
+    deleteKereta,
+    deleteStasiun
 }

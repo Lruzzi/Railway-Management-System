@@ -112,16 +112,19 @@ router.get("/kereta", (req, res) => {
   router.post("/inputtarif", inputController.inputTarif);
   router.post("/inputadmin", inputController.inputAdmin);
   router.post("/inputkereta", inputController.inputKereta);
+  router.post("/inputstasiun", inputController.inputStasiun);
 
   //update
   router.post("/updatetarif", updateController.updateTarif);
   router.post("/updateadmin", updateController.updateAdmin);
   router.post("/updatekereta", updateController.updateKereta);
+  router.post("/updateStasiun", updateController.updateStasiun);
 
   //delete
   router.post("/deletetarif", deleteController.deleteTarif);
   router.post("/deleteadmin", deleteController.deleteAdmin);
   router.post("/deletekereta", deleteController.deleteKereta);
+  router.post("/deletestasiun", deleteController.deleteStasiun);
 
 
   //cek
@@ -130,6 +133,7 @@ router.get("/kereta", (req, res) => {
   router.post("/cekadmin", cekController.cekAdmin);
   router.post("/cekusername", cekController.cekUsername);
   router.post("/cekkereta", cekController.cekKereta);
+  router.post("/cekstasiun", cekController.cekStasiun);
 
   //Log
   router.post("/login", logController.login);
@@ -143,6 +147,8 @@ router.get("/kereta", (req, res) => {
     });
   });
 
+
+  //route to get the image
   router.get("/image", (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/public/favicon-ikn.png'));
   });

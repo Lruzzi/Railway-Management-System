@@ -223,7 +223,7 @@
             tahun_dibangun: tahun_dibangun
         }, function (data) {
             if (data === 'done') {
-                window.location.href = '/editstasiun';
+                window.location.href = '/railway/editstasiun';
                 window.alert('Input Data Stasiun Sukses');
             } else if (data === 'empty') {
                 window.alert('Data Tidak Boleh Kosong');
@@ -270,11 +270,11 @@
     $('#deletes').click(function () {
         id_stasiun = $('#id_update').val();
         $.post('/railway/cekstasiun', {
-            id_Stasiun: id_stasiun
+            id_stasiun: id_stasiun
         }, function (data) {
             if (data === 'found') {
                 if (window.confirm('Apakah Anda Yakin Ingin Menghapus Data Stasiun Ini?')) {
-                    $.post('/deletestasiun', {
+                    $.post('/railway/deletestasiun', {
                         id_stasiun: id_stasiun
                     }, function (datas) {
                         if (datas === 'deleted') {

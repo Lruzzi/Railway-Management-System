@@ -30,8 +30,19 @@ async function inputKereta(req,res){
     }
 }
 
+async function inputStasiun(req,res){
+    try{
+        const result = await railway.inputStasiun(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     inputTarif,
     inputAdmin,
-    inputKereta
+    inputKereta,
+    inputStasiun
 }

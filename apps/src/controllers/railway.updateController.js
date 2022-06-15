@@ -30,8 +30,19 @@ async function updateKereta(req,res){
     }
 }
 
+async function updateStasiun(req,res){
+    try{
+        const result = await railway.updateStasiun(req);
+        res.json(result);
+    }
+    catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     updateTarif,
     updateAdmin,
-    updateKereta
+    updateKereta,
+    updateStasiun
 }

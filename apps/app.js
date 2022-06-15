@@ -22,8 +22,6 @@ app.use(session({
 
 app.use(cors(corsOptions));
 
-app.use('../public/', express.static('public'));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

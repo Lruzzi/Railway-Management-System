@@ -60,8 +60,29 @@ async function inputKereta(req) {
     }
 }
 
+async function inputStasiun(req) {
+    var nama_stasiun = req.body.nama_stasiun;
+    var daerah_stasiun = req.body.daerah_stasiun;
+    var tahun_dibangun = req.body.tahun_dibangun;
+
+    if(nama_stasiun && daerah_stasiun && tahun_dibangun){
+        const query = `insert into stasiun (nama_stasiun,daerah_stasiun,tahun_bangun) values ('${nama_stasiun}','${daerah_stasiun}','${tahun_dibangun}');`; //query insert data stasiun
+        const result = await db.query(query);
+        if(result){
+            return('done');
+        }
+        else{
+            return('fail');
+        }
+    }
+    else{
+        return('empty');
+    }
+}
+
 module.exports = {
     inputTarif,
     inputAdmin,
-    inputKereta
+    inputKereta,
+    inputStasiun
 }
