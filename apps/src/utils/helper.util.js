@@ -14,7 +14,24 @@ async function hashPassword(password) {
     return hashedPassword;
 }
 
+async function matchPattern(username, password) {
+    const pattern = /^\S*$/;
+    if(pattern.test(username) && pattern.test(password)){
+        return 'false';
+    }
+    else if(pattern.test(username)){
+        return 'ptrue';
+    }
+    else if(pattern.test(password)){
+        return 'utrue';
+    }
+    else{
+        return 'uptrue';
+    }
+}
+
 module.exports = {
     comparePassword,
-    hashPassword
+    hashPassword,
+    matchPattern
 }

@@ -37,14 +37,26 @@ async function inputAdmin(req) {
             return ('taken');
         }
         else{
-            hash = await helper.hashPassword(password);
-            const query = `insert into admin (username,password,super_admin) values ('${username}','${hash}',false);`; //query insert data admin
-            const result = await db.query(query);
-            if(result){
-                return('done');
+            var regex = await helper.matchPattern(username, password);
+            if(regex === 'false'){
+                hash = await helper.hashPassword(password);
+                const query = `insert into admin (username,password,super_admin) values ('${username}','${hash}',false);`; //query insert data admin
+                const result = await db.query(query);
+                if(result){
+                    return('done');
+                }
+                else{
+                    return('fail');
+                }
             }
-            else{
-                return('faile');
+            else if(regex === 'uptrue'){
+                return('uptrue');
+            }
+            else if(regex === 'utrue'){
+                return('utrue');
+            }
+            else if(regex === 'ptrue'){
+                return('ptrue');
             }
         }
     }
